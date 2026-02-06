@@ -36,7 +36,7 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 announcements_db = {
     "EC201": [ 
-        { "id": str(uuid.uuid4()), "author": "J Panda", "date": "Sep 28", "content": "Welcome to Digital Electronics! The syllabus has been posted under the Classwork tab." }
+        { "id": str(uuid.uuid4()), "author": "dr. devkar sharma", "date": "Sep 28", "content": "Welcome to Digital Electronics! The syllabus has been posted under the Classwork tab." }
     ],
     "EC207": [], "EC209": [], "cs-b-md": [], 
 }
@@ -269,7 +269,7 @@ async def delete_announcement(classroom_id: str, announcement_id: str):
     return {"message": "Announcement deleted"}
 
 @app.get("/api/dashboard")
-async def get_dashboard_data(): return {"teacherName": "J Panda"}
+async def get_dashboard_data(): return {"teacherName": "dr. devkar sharma"}
 @app.get("/api/classrooms")
 async def get_classrooms_data(): return [{"id": "EC201", "name": "Digital Electronics - ECE-A"}]
 
