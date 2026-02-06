@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="styles.css" />
     <style>
-        /* Modal Styles */
+        /* New Modal Styles for Help Feature */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
         .modal-content { background-color: var(--bg-card, #fff); color: var(--text-main, #333); margin: 10% auto; padding: 20px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); position: relative; animation: slideDown 0.3s ease-out; }
         .close-modal { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
@@ -38,7 +38,7 @@
                     <input type="checkbox" id="theme-toggle">
                     <span class="slider"></span>
                 </label>
-                
+                <a href="#" class="login-btn">Login</a>
                 <a href="generator.html" class="signup-btn">Get Started</a>
             </div>
         </div>
@@ -66,15 +66,25 @@
         <section id="dashboards" class="dashboards fade-in-section">
             <div class="container">
                 <h2>A Unified Hub for Everyone</h2>
+                <p class="section-subtitle">Personalized dashboards designed for every role in your institution.</p>
                 <div class="dashboard-cards-container">
                     <div class="dashboard-card student">
-                        <div class="card-icon">🎓</div><h3>For Students</h3><p>Access your live schedule, get weather-based class alerts, and connect with your courses.</p><a href="student.html" class="dashboard-btn">Open Student Hub</a>
+                        <div class="card-icon">🎓</div>
+                        <h3>For Students</h3>
+                        <p>Access your live schedule, get weather-based class alerts, and connect with your courses, all in one place.</p>
+                        <a href="student.html" class="dashboard-btn">Open Student Hub</a>
                     </div>
                     <div class="dashboard-card teacher">
-                        <div class="card-icon">📖</div><h3>For Teachers</h3><p>Manage your classes, see colleague availability, and communicate updates effortlessly.</p><a href="teacher.html" class="dashboard-btn">Manage Courses</a>
+                        <div class="card-icon">📖</div>
+                        <h3>For Teachers</h3>
+                        <p>Manage your classes, see colleague availability, and communicate updates effortlessly.</p>
+                        <a href="teacher.html" class="dashboard-btn">Manage Courses</a>
                     </div>
                     <div class="dashboard-card admin">
-                        <div class="card-icon">⚙️</div><h3>For Admins</h3><p>Oversee all operations, manage users, and get a high-level view of the entire institution.</p><a href="admin.html" class="dashboard-btn">Access Admin Portal</a>
+                        <div class="card-icon">⚙️</div>
+                        <h3>For Admins</h3>
+                        <p>Oversee all operations, manage users, and get a high-level view of the entire institution's schedule.</p>
+                        <a href="admin.html" class="dashboard-btn">Access Admin Portal</a>
                     </div>
                 </div>
             </div>
@@ -84,26 +94,80 @@
             <div class="container">
                 <h2>Unlock the Power of SmartFlex</h2>
                 <div class="features-grid">
-                    <div class="feature-item"><i class="feature-icon fa-solid fa-brain"></i><h4>Dynamic Timetable Generation</h4><p>Automated allocation.</p></div>
-                    <div class="feature-item"><i class="feature-icon fa-solid fa-arrows-rotate"></i><h4>Real-Time Adjustments</h4><p>Instant rescheduling.</p></div>
-                    <div class="feature-item"><i class="feature-icon fa-solid fa-cloud-sun-rain"></i><h4>Weather-Aware</h4><p>Alerts based on forecasts.</p></div>
-                    <div class="feature-item"><i class="feature-icon fa-solid fa-comments"></i><h4>Collaboration</h4><p>Integrated messaging.</p></div>
+                    <div class="feature-item">
+                        <i class="feature-icon fa-solid fa-brain"></i>
+                        <h4>Dynamic Timetable Generation</h4>
+                        <p>Our intelligent algorithm automates class allocations, resolves conflicts, and optimizes resource usage in seconds.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fa-solid fa-arrows-rotate"></i>
+                        <h4>Real-Time Dynamic Adjustments</h4>
+                        <p>A faculty member on leave? Instantly find the best substitute or reschedule classes without manual effort.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fa-solid fa-cloud-sun-rain"></i>
+                        <h4>Weather-Aware Scheduling</h4>
+                        <p>Integrated weather forecasts automatically alert students and faculty of potential disruptions or a switch to online classes.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fa-solid fa-comments"></i>
+                        <h4>Seamless Collaboration</h4>
+                        <p>Facilitate communication between students, faculty, and admins with integrated messaging and notifications.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fa-solid fa-chart-line"></i>
+                        <h4>Resource Analytics</h4>
+                        <p>Gain insights into classroom usage, faculty workload, and student availability to make data-driven decisions.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fa-solid fa-shield-halved"></i>
+                        <h4>Unified & Secure Platform</h4>
+                        <p>A one-stop platform for everything classroom-related, built with robust security and access controls for all users.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="platform-in-action fade-in-section">
+             <div class="container platform-container">
+                <div class="platform-content">
+                    <h2>Handle Changes on the Fly</h2>
+                    <p>SmartFlex makes unexpected changes simple. When a faculty member is unavailable, the system instantly identifies conflicts and proposes intelligent, conflict-free solutions.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Auto-detect scheduling conflicts.</li>
+                        <li><i class="fa-solid fa-check"></i> Find available substitute teachers.</li>
+                        <li><i class="fa-solid fa-check"></i> Suggest optimal open time slots.</li>
+                        <li><i class="fa-solid fa-check"></i> Notify all affected parties with one click.</li>
+                    </ul>
+                </div>
+                <div class="platform-image">
+                    <img src="images/feature-dynamic-schedule.jpg" alt="A laptop screen showing the SmartFlex dynamic scheduling interface" />
                 </div>
             </div>
         </section>
 
         <section id="integrations" class="integrations-section fade-in-section">
             <div class="container">
-                <h2>Integrates With Your Tools</h2>
+                <h2>Integrates With Your Existing Tools</h2>
+                <p class="section-subtitle">SmartFlex is built on a robust, modern tech stack to ensure reliability and performance.</p>
                 <div class="integrations-container">
-                    <div class="integrations-image"><img src="images/integration-logos.png" alt="Logos" /></div>
+                    <div class="integrations-image">
+                        <img src="images/integration-logos.png" alt="Logos of integrated services like FastAPI, SQLAlchemy, and others" />
+                    </div>
                     <div class="integrations-content">
-                        <h4>Tech Stack</h4>
-                        <p>FastAPI, SQLAlchemy, OR-Tools, and more.</p>
+                        <h4>Our Technology Stack</h4>
+                        <p>We leverage powerful open-source technologies to deliver a seamless and intelligent scheduling experience.</p>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> <strong>FastAPI & SQLAlchemy:</strong> For a high-performance, asynchronous backend and robust database interactions.</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>PuLP & OR-Tools:</strong> To power our intelligent optimization engine for conflict-free scheduling.</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Live Weather APIs:</strong> For real-time data to enable weather-aware scheduling and alerts.</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Modern Frontend:</strong> A responsive and dynamic interface built with vanilla HTML, CSS, and JavaScript.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <div id="helpModal" class="modal">
@@ -135,7 +199,45 @@
 
     <footer class="main-footer">
         <div class="container">
-             <div class="footer-bottom"><p>&copy; 2025 SmartFlex. All rights reserved.</p></div>
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <div class="logo" data-text="SmartFlex">SmartFlex</div>
+                    <p>Your trusted partner for intelligent timetable management.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="generator.html">Generator</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#integrations">Integrations</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SmartFlex. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
