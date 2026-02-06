@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard :: SmartFlex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="teacher.css" />
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div>
+            <div class="logo" data-text="SmartFlex">SmartFlex</div>
+            <div class="user-profile">
+                <span class="user-icon"></span>
+                <span id="teacher-name" class="user-name">Teacher</span>
+            </div>
+            <div class="theme-switcher-container">
+                <label class="theme-switcher">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <nav id="sidebar-nav">
+            <ul>
+                <li class="active" data-view="main-dashboard-view">My Schedule</li>
+                <li data-view="classroom-list-view">My Classrooms</li>
+                <li>Student Queries</li>
+            </ul>
+        </nav>
+        <button class="logout">Logout</button>
+    </aside>
+
+    <main class="main-content">
+        <div id="main-dashboard-view" class="view-container active">
+            <section class="top-cards">
+                <div class="card border-cyan">
+                    <div class="title">My Courses</div>
+                    <div id="totalCourses" class="number">0</div>
+                </div>
+                <div class="card border-magenta">
+                    <div class="title">My Students</div>
+                    <div id="totalStudents" class="number">0</div>
+                </div>
+            </section>
+
+            <section class="timetable-container">
+                <h1>My Class Schedule</h1>
+                <div class="timetable-wrapper">
+                    <div class="schedule-grid" id="schedule-grid"></div>
+                </div>
+            </section>
+
+            <section class="bottom-panels">
+                <div class="faculty-on-leave data-block">
+                    <h3>Colleagues on Leave</h3>
+                    <ul id="facultyOnLeaveList"></ul>
+                </div>
+                <div class="weather data-block">
+                    <h3>System Advisory</h3>
+                    <div class="tabs">
+                        <button class="tab active" data-tab="today">Today</button>
+                        <button class="tab" data-tab="tomorrow">Tomorrow</button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="today" class="content active">
+                            <div class="weather-icon" id="today-weather-icon">...</div>
+                            <h4 id="today-weather-desc">Loading Weather...</h4>
+                            <p><em id="today-campus-status">Please wait.</em></p>
+                            <small id="today-online-prob">Online Class Probability: --%</small>
+                        </div>
+                        <div id="tomorrow" class="content">
+                            <div class="weather-icon" id="tomorrow-weather-icon">...</div>
+                            <h4 id="tomorrow-weather-desc">Loading Weather...</h4>
+                            <p><em id="tomorrow-campus-status">Please wait.</em></p>
+                            <small id="tomorrow-online-prob">Online Class Probability: --%</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="classroom-list-view" class="view-container">
+            <header class="view-header">
+                <h1>My Classrooms</h1>
+            </header>
+            <div id="teacher-classroom-grid" class="classroom-grid">
+                </div>
+        </div>
+
+        <div id="classroom-detail-view" class="view-container">
+            <header class="view-header detail-header">
+                <button id="back-to-classrooms-btn" class="back-btn">← Back</button>
+                <h1 id="detail-classroom-name-main" class="hidden">My Classrooms</h1>
+            </header>
+            
+            <div class="class-detail-header">
+                <h2 id="class-detail-title"></h2>
+                <p id="class-detail-code"></p>
+            </div>
+
+            <nav class="class-detail-tabs">
+                <button class="tab-btn active" data-target="stream-content">Stream</button>
+                <button class="tab-btn" data-target="classwork-content">Classwork</button>
+                <button class="tab-btn" data-target="people-content">People</button>
+                <button class="tab-btn" data-target="attendance-content">Attendance</button>
+            </nav>
+
+            <div class="tab-content-container">
+                <div id="stream-content" class="tab-content-pane">
+                    <div class="post-announcement-box">
+                        <textarea id="announcement-textarea" placeholder="Announce something to the class..."></textarea>
+                        <button id="post-announcement-btn">Post Announcement</button>
+                    </div>
+                    <div id="stream-posts-container"></div>
+                </div>
+
+                <div id="classwork-content" class="tab-content-pane hidden">
+                    <div class="classwork-item">
+                        <span class="item-icon">📝</span>
+                        <div class="item-details">
+                            <p class="item-title">Assignment 3: Logic Gates</p>
+                            <p class="item-due-date">Due: Sep 26</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="people-content" class="tab-content-pane hidden">
+                    <h3>Classmates</h3>
+                    <div class="person-item"><img src="https://i.pravatar.cc/40?img=1" alt="Student" /><span>Alex Doe</span></div>
+                    <div class="person-item"><img src="https://i.pravatar.cc/40?img=2" alt="Student" /><span>Jane Smith</span></div>
+                </div>
+                
+                <div id="attendance-content" class="tab-content-pane hidden">
+                    <div class="attendance-controls">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <label for="attendance-date">Date:</label>
+                            <input type="date" id="attendance-date" />
+                            <button id="load-attendance-btn" class="action-btn">Load List</button>
+                        </div>
+                        
+                        <div class="bulk-actions" style="display:flex; gap:5px;">
+                            <button id="mark-all-p" class="action-btn" style="background:#d4edda; color:#155724; border:1px solid #c3e6cb;">Mark All P</button>
+                            <button id="mark-all-a" class="action-btn" style="background:#f8d7da; color:#721c24; border:1px solid #f5c6cb;">Mark All A</button>
+                        </div>
+
+                        <button id="save-attendance-btn" class="generate-btn">Save Attendance</button>
+                    </div>
+                    
+                    <div class="attendance-grid-container">
+                        <table id="attendance-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 15%;">Roll No</th>
+                                    <th style="width: 35%;">Name</th>
+                                    <th style="width: 20%;">Status</th>
+                                    <th style="width: 30%;">Remarks</th> </tr>
+                            </thead>
+                            <tbody>
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="teacher.js"></script>
+</body>
+</html>

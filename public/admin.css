@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Share+Tech+Mono&display=swap');
+
+/* --- THEME VARIABLES --- */
+:root {
+    /* Light Theme (Default) */
+    --background-color: #F8F9FA;
+    --sidebar-bg: #FFFFFF;
+    --component-bg: #FFFFFF;
+    --text-color: #1F2937;
+    --text-secondary: #6B7280;
+    --border-color: #E5E7EB;
+    --primary-accent: #3B82F6;
+    --secondary-accent: #60A5FA;
+    --tertiary-accent: #BFDBFE;
+    --card-hover-bg: #EFF6FF;
+    --status-green: #10B981;
+    --status-yellow: #F59E0B;
+}
+
+body.dark-theme {
+    /* Dark Theme Overrides */
+    --background-color: #1e1e1e;
+    --sidebar-bg: #121212;
+    --component-bg: #23252d;
+    --text-color: #dddddd;
+    --text-secondary: #888888;
+    --border-color: #444;
+    --primary-accent: #00f9db;
+    --secondary-accent: #722ed1;
+    --tertiary-accent: #ff5555;
+    --card-hover-bg: #303c35;
+    --status-green: #34D399;
+    --status-yellow: #FBBF24;
+}
+
+/* --- BASE STYLES (FROM TEACHER DASHBOARD) --- */
+* { box-sizing: border-box; }
+
+body { 
+    margin: 0; 
+    font-family: 'Share Tech Mono', monospace;
+    background: var(--background-color); 
+    display: flex; 
+    height: 100vh; 
+    color: var(--text-color); 
+    overflow: hidden; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar { 
+    width: 220px; 
+    flex-shrink: 0; 
+    background: var(--sidebar-bg); 
+    border-right: 1px solid var(--border-color); 
+    padding: 1rem; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.logo { 
+    font-family: 'Orbitron', sans-serif; 
+    font-size: 1.8rem; 
+    font-weight: 700; 
+    color: var(--primary-accent); 
+    text-align: center; 
+    text-transform: uppercase; 
+}
+
+.user-profile { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: 1rem; 
+    margin-bottom: 1rem;
+    padding: 0.5rem; 
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+.user-icon { width: 12px; height: 12px; border-radius: 50%; background-color: var(--primary-accent); }
+.user-name { font-size: 1rem; color: var(--text-color); font-weight: bold; }
+
+.theme-switcher-container { display: flex; justify-content: center; padding: 10px 0; margin-bottom: 1rem; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+.theme-switcher { position: relative; display: inline-block; width: 60px; height: 34px; }
+.theme-switcher input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: "☀️"; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+input:checked + .slider { background-color: var(--primary-accent); }
+input:checked + .slider:before { transform: translateX(26px); content: "🌙"; }
+
+.sidebar nav { flex-grow: 1; }
+.sidebar nav ul { list-style: none; padding: 0; margin: 0; }
+.sidebar nav ul li { padding: 0.8rem 1rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.2s ease-in-out; border-left: 3px solid transparent; border-radius: 4px; }
+.sidebar nav ul li.active, .sidebar nav ul li:hover { background: var(--card-hover-bg); color: var(--primary-accent); border-left: 3px solid var(--primary-accent); }
+
+.logout { background: none; border: 1px solid var(--tertiary-accent); color: var(--tertiary-accent); font-family: 'Share Tech Mono', monospace; font-size: 1rem; cursor: pointer; padding: 0.5rem; width: 100%; transition: all 0.2s; border-radius: 4px; }
+.logout:hover { background: var(--tertiary-accent); color: #FFFFFF; }
+
+.main-content { flex-grow: 1; overflow-y: auto; padding: 2rem; }
+.view-container { display: none; }
+.view-container.active { display: block; }
+h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 1px; color: var(--text-color); margin: 0; }
+
+.top-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+.card { border-radius: 8px; color: var(--text-color); background: var(--component-bg); border: 1px solid var(--border-color); border-left-width: 4px; transition: all 0.3s ease; padding: 1rem; }
+.card.border-cyan { border-left-color: var(--primary-accent); }
+.card.border-magenta { border-left-color: var(--secondary-accent); }
+.card.border-yellow { border-left-color: var(--status-yellow); }
+.card.border-green { border-left-color: var(--status-green); }
+.card .title { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.2rem; color: var(--text-secondary); }
+.card .number { font-size: 2rem; font-weight: 700; font-family: 'Orbitron', sans-serif; color: var(--text-color);}
+
+.bottom-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.data-block { background: var(--component-bg); padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; }
+.data-block h3 { margin-bottom: 1rem; }
+
+/* --- NEW STYLES FOR ADMIN DASHBOARD --- */
+.log-list, .health-list { list-style: none; padding: 0; margin: 0; }
+.log-list li, .health-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
+.log-list li:last-child, .health-list li:last-child { border-bottom: none; }
+.health-list li { display: flex; justify-content: space-between; align-items: center; }
+.health-status { font-weight: bold; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; }
+.health-status.ok { color: var(--status-green); border: 1px solid var(--status-green); }
+.health-status.warning { color: var(--status-yellow); border: 1px solid var(--status-yellow); }
+
+.view-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+.action-btn { background-color: var(--primary-accent); color: #fff; border: none; padding: 0.6rem 1.2rem; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; border-radius: 4px; cursor: pointer; transition: opacity 0.2s; }
+.action-btn:hover { opacity: 0.9; }
+body.dark-theme .action-btn { color: #121212; }
+
+.table-container { background: var(--component-bg); border: 1px solid var(--border-color); border-radius: 8px; overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; }
+.admin-table th, .admin-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+.admin-table th { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--text-secondary); }
+.admin-table tbody tr:last-child td { border-bottom: none; }
+.admin-table tbody tr:hover { background-color: var(--card-hover-bg); }
+
+.table-actions button { background: none; border: 1px solid var(--border-color); color: var(--text-color); font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; cursor: pointer; padding: 0.3rem 0.6rem; border-radius: 4px; margin-right: 5px; transition: all 0.2s; }
+.table-actions button.edit-btn:hover { border-color: var(--primary-accent); color: var(--primary-accent); }
+.table-actions button.delete-btn:hover { border-color: var(--tertiary-accent); color: var(--tertiary-accent); }

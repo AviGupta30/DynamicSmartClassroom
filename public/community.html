@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Hub :: SmartFlex</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="community.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo" data-text="SmartFlex">SmartFlex</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="admin.html">Dashboard</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <label class="theme-switcher">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <div class="community-container">
+        <aside class="comm-sidebar">
+            <button class="comm-btn new-post-btn" id="admin-login-btn">
+                <i class="fa-solid fa-lock"></i> Admin Login
+            </button>
+            <button class="comm-btn new-post-btn hidden" id="open-post-modal">
+                <i class="fa-solid fa-pen-to-square"></i> New Post
+            </button>
+
+            <div class="separator" style="border-bottom: 1px solid var(--border-color); margin: 15px 0;"></div>
+
+            <button class="comm-btn active" id="btn-notice" onclick="filterPosts('Notice', this)">
+                <i class="fa-solid fa-circle-exclamation"></i> Notices
+            </button>
+            <button class="comm-btn" id="btn-event" onclick="filterPosts('Event', this)">
+                <i class="fa-solid fa-calendar-day"></i> Events
+            </button>
+            <button class="comm-btn" id="btn-general" onclick="filterPosts('General', this)">
+                <i class="fa-solid fa-comments"></i> General
+            </button>
+        </aside>
+
+        <main>
+            <div class="feed-header">
+                <h2 id="feed-title">Notices</h2>
+                <span style="font-size: 0.9rem; color: var(--text-secondary);" id="post-count">Loading...</span>
+            </div>
+            <div id="posts-feed">
+                </div>
+        </main>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content" style="width: 400px;">
+            <h2 style="margin-bottom: 20px;">Admin Verification</h2>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" id="admin-password-input" placeholder="Enter admin password">
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="close-login">Cancel</button>
+                <button type="button" class="btn btn-primary" id="submit-login">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="post-modal" class="modal">
+        <div class="modal-content">
+            <h2 style="margin-bottom: 20px;">Create New Post</h2>
+            <form id="create-post-form">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" id="post-tag" required>
+                        <option value="" disabled selected>-- Select Category --</option>
+                        <option value="Notice">Notice</option>
+                        <option value="Event">Event</option>
+                        <option value="General">General</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" id="post-title" placeholder="Enter a descriptive title" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" id="post-content" rows="5" placeholder="Type your message here..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Attachment (PDF/Image)</label>
+                    <input type="file" class="form-control" id="post-file" accept=".pdf,.png,.jpg,.jpeg">
+                </div>
+
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <label>Author</label>
+                        <input type="text" class="form-control" id="post-author" value="Admin" readonly>
+                    </div>
+                    <div>
+                        <label>Role</label>
+                        <input type="text" class="form-control" id="post-role" value="Administrator" readonly>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="close-modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Post Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="community.js"></script>
+    <style>
+        .hidden { display: none !important; }
+        .post-attachment { margin-top: 10px; font-size: 0.9rem; }
+        .post-attachment a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: rgba(59, 130, 246, 0.1); border-radius: 6px; color: var(--accent-color); font-weight: 500; width: fit-content; text-decoration: none; }
+        .post-attachment a:hover { background: rgba(59, 130, 246, 0.2); }
+        .delete-post-btn { background: transparent; border: none; color: #ef4444; cursor: pointer; font-size: 0.9rem; transition: color 0.2s; }
+        .delete-post-btn:hover { color: #dc2626; }
+    </style>
+</body>
+</html>

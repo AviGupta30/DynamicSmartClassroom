@@ -1,0 +1,92 @@
+/* Exam Seating Specific Styles */
+.seat-grid {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+.room-title { 
+    margin: 25px 0 15px; 
+    padding-bottom: 8px; 
+    border-bottom: 2px solid var(--border-color); 
+    color: var(--text-primary);
+    font-size: 1.4rem;
+}
+
+.seat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    min-height: 90px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.seat-card:hover { transform: translateY(-2px); }
+
+.seat-card .roll { 
+    font-weight: 800; 
+    font-size: 1.25rem; 
+    line-height: 1; 
+    margin-bottom: 4px; 
+}
+
+.seat-card .name { 
+    font-size: 0.85rem; 
+    font-weight: 500; 
+    margin-bottom: 6px; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden; 
+    width: 100%; 
+}
+
+.seat-card .branch { 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    background: rgba(0,0,0,0.25); 
+    padding: 2px 8px; 
+    border-radius: 12px; 
+    font-weight: 600; 
+}
+
+/* Branch Colors */
+.color-1 { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: #fff; }
+.color-2 { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff; }
+.color-3 { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; }
+.color-4 { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #fff; }
+.color-5 { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; }
+
+.seat-card.empty { 
+    background: var(--component-bg); 
+    color: var(--text-secondary); 
+    border: 2px dashed var(--border-color); 
+    box-shadow: none; 
+}
+
+.upload-section {
+    background: var(--component-bg);
+    border: 2px dashed var(--border-color);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: all 0.3s;
+}
+.upload-section:hover { border-color: var(--accent-color); }
+
+.upload-section h3 { margin-top: 0; font-size: 1.1rem; color: var(--text-primary); }
+.file-status { display: block; margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary); }
+.file-status.success { color: #4ade80; font-weight: bold; }

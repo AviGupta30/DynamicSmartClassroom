@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timetable Generator - SmartFlex</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="generator.css" />
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo" data-text="SmartFlex">SmartFlex</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <label class="theme-switcher">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page-container">
+        <div class="page-header">
+            <h1>Timetable Generator</h1>
+            <p class="subtitle">Enter your requirements below or upload an Excel file to get started.</p>
+        </div>
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="spinner"></div>
+            <p>Finding the optimal schedule...</p>
+        </div>
+
+        <div class="generator-layout">
+            <section class="input-panel">
+                <div class="upload-section">
+                    <h3>Upload Data</h3>
+                    <p>Use our template with columns: Courses, WeeklyHours, Faculty, Rooms.</p>
+                    <input type="file" id="excel-upload" accept=".xlsx, .xls, .csv">
+                    <label for="excel-upload" class="upload-btn">Choose File</label>
+                    <span id="file-name">No file chosen</span>
+                </div>
+
+                <h2>Enter Details Manually</h2>
+                <form id="generator-form">
+                    <div class="form-group">
+                        <label for="section-name">Section Name</label>
+                        <input type="text" id="section-name" placeholder="e.g., CSE 2nd Year, Section A" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Courses, Weekly Hours & Assigned Faculty</label>
+                        <div id="courses-list" class="input-list"></div>
+                        <button type="button" id="add-course-btn" class="add-btn">+ Add Another Course</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Available Rooms</label>
+                        <div id="rooms-list" class="input-list"></div>
+                        <button type="button" id="add-room-btn" class="add-btn">+ Add Another Room</button>
+                    </div>
+
+                    <div class="form-group options-group">
+                        <input type="checkbox" id="lunch-break-toggle" checked>
+                        <label for="lunch-break-toggle">Include 1-2 PM Lunch Break</label>
+                    </div>
+
+                    <button type="submit" class="generate-btn">Generate Timetable</button>
+                </form>
+            </section>
+            
+            <section class="output-panel">
+                <div class="output-header">
+                    <h2>Generated Schedule</h2>
+                    <button id="view-saved-btn" class="view-btn">View Saved Timetables</button>
+                </div>
+                <div id="output-controls"></div> 
+                <div id="timetable-output">
+                    <div class="placeholder">
+                        Your generated timetable will appear here...
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <div id="saved-schedules-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <h2>Saved Timetables</h2>
+                <button id="clear-all-btn" class="clear-btn">Clear All</button>
+            </div>
+            <div id="saved-schedules-content"></div>
+
+            <div id="adjustment-ui-container" class="hidden">
+                <hr class="modal-divider">
+                <div id="adjustment-form-container">
+                    <h3>Make Dynamic Adjustments</h3>
+                    <p>Select a faculty member who will be on leave.</p>
+                    <form id="adjustment-form">
+                        <div class="form-group">
+                            <label for="faculty-select">Faculty Name</label>
+                            <select id="faculty-select" required></select>
+                        </div>
+                         <div class="form-group">
+                            <label for="leave-date">Date of Leave</label>
+                            <input type="date" id="leave-date" required>
+                        </div>
+                        <button type="submit" class="action-btn">Find Solutions</button>
+                        <button type="button" id="back-to-schedules-btn" class="view-btn">Back</button>
+                    </form>
+                </div>
+
+                <div id="solutions-container" class="hidden">
+                    <h3>Proposed Solutions</h3>
+                    <div id="solutions-list"></div>
+                    <div class="solutions-actions">
+                        <button id="apply-changes-btn" class="action-btn">Apply Selected Changes</button>
+                         <button type="button" id="back-to-form-btn" class="view-btn">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="generator.js"></script>
+</body>
+</html>

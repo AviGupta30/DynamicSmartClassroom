@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartFlex - Intelligent Timetable Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Modal Styles */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
+        .modal-content { background-color: var(--bg-card, #fff); color: var(--text-main, #333); margin: 10% auto; padding: 20px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); position: relative; animation: slideDown 0.3s ease-out; }
+        .close-modal { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close-modal:hover { color: #000; }
+        @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: var(--bg-input, #fff); color: var(--text-main, #333); }
+        .submit-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; width: 100%; font-size: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo" data-text="SmartFlex">SmartFlex</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="generator.html">Generator</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#integrations">Integrations</a></li>
+                    <li><a href="#" id="help-btn">Help</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <label class="theme-switcher">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                
+                <a href="generator.html" class="signup-btn">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>The Future of Academic Scheduling is Here.</h1>
+                    <p>
+                        SmartFlex is an intelligent, all-in-one platform that automates timetable generation, adapts to real-time changes, and streamlines communication for students, faculty, and administrators.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#features" class="btn btn-primary">Explore Features</a>
+                        <a href="#dashboards" class="btn btn-secondary">View Dashboards</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/image1.png.png" alt="Abstract visualization of a neural network" />
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboards" class="dashboards fade-in-section">
+            <div class="container">
+                <h2>A Unified Hub for Everyone</h2>
+                <div class="dashboard-cards-container">
+                    <div class="dashboard-card student">
+                        <div class="card-icon">🎓</div><h3>For Students</h3><p>Access your live schedule, get weather-based class alerts, and connect with your courses.</p><a href="student.html" class="dashboard-btn">Open Student Hub</a>
+                    </div>
+                    <div class="dashboard-card teacher">
+                        <div class="card-icon">📖</div><h3>For Teachers</h3><p>Manage your classes, see colleague availability, and communicate updates effortlessly.</p><a href="teacher.html" class="dashboard-btn">Manage Courses</a>
+                    </div>
+                    <div class="dashboard-card admin">
+                        <div class="card-icon">⚙️</div><h3>For Admins</h3><p>Oversee all operations, manage users, and get a high-level view of the entire institution.</p><a href="admin.html" class="dashboard-btn">Access Admin Portal</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features fade-in-section">
+            <div class="container">
+                <h2>Unlock the Power of SmartFlex</h2>
+                <div class="features-grid">
+                    <div class="feature-item"><i class="feature-icon fa-solid fa-brain"></i><h4>Dynamic Timetable Generation</h4><p>Automated allocation.</p></div>
+                    <div class="feature-item"><i class="feature-icon fa-solid fa-arrows-rotate"></i><h4>Real-Time Adjustments</h4><p>Instant rescheduling.</p></div>
+                    <div class="feature-item"><i class="feature-icon fa-solid fa-cloud-sun-rain"></i><h4>Weather-Aware</h4><p>Alerts based on forecasts.</p></div>
+                    <div class="feature-item"><i class="feature-icon fa-solid fa-comments"></i><h4>Collaboration</h4><p>Integrated messaging.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="integrations" class="integrations-section fade-in-section">
+            <div class="container">
+                <h2>Integrates With Your Tools</h2>
+                <div class="integrations-container">
+                    <div class="integrations-image"><img src="images/integration-logos.png" alt="Logos" /></div>
+                    <div class="integrations-content">
+                        <h4>Tech Stack</h4>
+                        <p>FastAPI, SQLAlchemy, OR-Tools, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Raise a Complaint / Help</h2>
+            <p>We are here to assist you. Please fill out the form below.</p>
+            <form id="complaintForm">
+                <div class="form-group">
+                    <label for="c-name">Name</label>
+                    <input type="text" id="c-name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="c-email">Email</label>
+                    <input type="email" id="c-email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="c-subject">Subject</label>
+                    <input type="text" id="c-subject" required placeholder="Brief issue summary">
+                </div>
+                <div class="form-group">
+                    <label for="c-message">Message</label>
+                    <textarea id="c-message" rows="4" required placeholder="Describe your issue..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Complaint</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+             <div class="footer-bottom"><p>&copy; 2025 SmartFlex. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

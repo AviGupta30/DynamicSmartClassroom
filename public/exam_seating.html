@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Seat Allocator :: SmartFlex</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="exam_seating.css" />
+    <link rel="stylesheet" href="generator.css" />
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">SmartFlex</div>
+            <nav class="main-nav">
+                <ul><li><a href="admin.html">Back to Dashboard</a></li></ul>
+            </nav>
+            <div class="header-actions">
+                <label class="theme-switcher">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page-container">
+        <div class="page-header">
+            <h1>Smart Seat Exam Allocator</h1>
+            <p class="subtitle">OR-Tools Powered: Balanced distribution & Anti-Cheating logic.</p>
+        </div>
+
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="spinner"></div>
+            <p>Running CP-SAT Optimization...</p>
+        </div>
+
+        <div class="generator-layout">
+            <section class="input-panel">
+                
+                <div class="upload-section">
+                    <h3>1. Upload Student Lists</h3>
+                    <p style="font-size: 0.8rem; opacity: 0.7; color: var(--text-secondary);">Select one or more Excel/CSV files.<br>Required: <code>Name</code>, <code>Branch</code></p>
+                    <input type="file" id="student-upload" accept=".csv, .xlsx, .xls" multiple>
+                    <label for="student-upload" class="upload-btn">Choose Files</label>
+                    <span id="student-file-status" class="file-status">No files chosen</span>
+                </div>
+
+                <div class="upload-section">
+                    <h3>2. Upload Room Lists</h3>
+                    <p style="font-size: 0.8rem; opacity: 0.7; color: var(--text-secondary);">Select one or more Excel/CSV files.<br>Required: <code>Room</code>, <code>Rows</code>, <code>Columns</code></p>
+                    <input type="file" id="room-upload" accept=".csv, .xlsx, .xls" multiple>
+                    <label for="room-upload" class="upload-btn">Choose Files</label>
+                    <span id="room-file-status" class="file-status">No files chosen</span>
+                </div>
+
+                <button id="generate-btn" class="generate-btn">Generate Seating Plan</button>
+            </section>
+            
+            <section class="output-panel">
+                <div class="output-header">
+                    <h2>Seating Plan</h2>
+                    <button id="print-btn" class="view-btn" onclick="window.print()">Print Plan</button>
+                </div>
+                <div id="seating-output">
+                    <div class="placeholder" style="color: var(--text-secondary);">
+                        Upload files and generate to see the plan.
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="exam_seating.js"></script>
+</body>
+</html>

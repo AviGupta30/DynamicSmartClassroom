@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard :: SmartFlex</title>
+    <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+    <aside class="sidebar">
+        <div>
+            <div class="logo" data-text="SmartFlex">SmartFlex</div>
+            <div class="user-profile">
+                <span class="user-icon"></span>
+                <span id="admin-name" class="user-name">Administrator</span>
+            </div>
+            <div class="theme-switcher-container">
+                <label class="theme-switcher">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <nav id="sidebar-nav">
+            <ul>
+                <li class="active" data-view="main-dashboard-view">Dashboard</li>
+                <li data-view="manage-teachers-view">Manage Teachers</li>
+                <li data-view="manage-students-view">Manage Students</li>
+                <li data-view="manage-courses-view">Manage Courses</li>
+                <li data-view="complaints-view">Help & Complaints</li>
+                <li data-view="system-settings-view">System Settings</li>
+            </ul>
+        </nav>
+        <button class="logout">Logout</button>
+    </aside>
+
+    <main class="main-content">
+        <div id="main-dashboard-view" class="view-container active">
+            <section class="tools-section">
+                <h2>Quick Actions</h2>
+                <div class="dashboard-cards-container" style="display: flex; gap: 20px;">
+                    <div class="card" style="flex:1; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px; cursor: pointer;" onclick="window.location.href='generator.html'">
+                        <h3>Timetable Generator</h3>
+                    </div>
+                    <div class="card" style="flex:1; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; padding: 20px; border-radius: 12px; cursor: pointer;" onclick="window.location.href='exam_seating.html'">
+                        <h3>Smart Seat Allocator</h3>
+                    </div>
+                </div>
+            </section>
+            <section class="top-cards">
+                <div class="card border-cyan"><div class="title">Total Teachers</div><div id="total-teachers" class="number">0</div></div>
+                <div class="card border-magenta"><div class="title">Total Students</div><div id="total-students" class="number">0</div></div>
+                <div class="card border-yellow"><div class="title">Total Courses</div><div id="total-courses" class="number">0</div></div>
+                <div class="card border-green"><div class="title">Active Classrooms</div><div id="active-classrooms" class="number">0</div></div>
+            </section>
+        </div>
+
+        <div id="manage-teachers-view" class="view-container">
+            <div class="view-header"><h1>Manage Teachers</h1><button class="action-btn">+ Add</button></div>
+            <div class="table-container"><table class="admin-table"><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Action</th></tr></thead><tbody id="teachers-table-body"></tbody></table></div>
+        </div>
+
+        <div id="manage-students-view" class="view-container">
+            <div class="view-header"><h1>Manage Students</h1><button class="action-btn">+ Add</button></div>
+            <div class="table-container"><table class="admin-table"><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Action</th></tr></thead><tbody id="students-table-body"></tbody></table></div>
+        </div>
+
+        <div id="manage-courses-view" class="view-container">
+            <div class="view-header"><h1>Manage Courses</h1><button class="action-btn">+ Add</button></div>
+            <div class="table-container"><table class="admin-table"><thead><tr><th>Code</th><th>Name</th><th>Credits</th><th>Action</th></tr></thead><tbody id="courses-table-body"></tbody></table></div>
+        </div>
+
+        <div id="complaints-view" class="view-container">
+            <div class="view-header">
+                <h1>Help Desk & Complaints</h1>
+                <button class="action-btn" onclick="fetchAndDisplayComplaints()">Refresh List</button>
+            </div>
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">ID</th>
+                            <th style="width: 10%">Date</th>
+                            <th style="width: 20%">Student/User</th>
+                            <th style="width: 15%">Subject</th>
+                            <th style="width: 30%">Message</th>
+                            <th style="width: 10%">Status</th>
+                            <th style="width: 10%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="complaints-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div id="system-settings-view" class="view-container">
+             <div class="view-header"><h1>System Settings</h1></div>
+             <div class="data-block">
+                 <h3>Maintenance Mode</h3>
+                 <label class="theme-switcher"><input type="checkbox" id="maintenance-toggle"><span class="slider"></span></label>
+             </div>
+        </div>
+    </main>
+    <script src="admin.js"></script>
+</body>
+</html>
